@@ -1,8 +1,16 @@
-# frozen_string_literal: true
+require "tcooper_palindrome/version"
 
-require_relative "tcooper_palindrome/version"
+class String
 
-module TcooperPalindrome
-  class Error < StandardError; end
-  # Your code goes here...
+  # Returns true for a palindrome, false otherwise.
+  def palindrome?
+    processed_content == processed_content.reverse
+  end
+  
+  private
+
+    # Returns content for palindrome testing.
+    def processed_content
+      self.scan(/[a-zA-Z]/).join.downcase
+    end
 end
